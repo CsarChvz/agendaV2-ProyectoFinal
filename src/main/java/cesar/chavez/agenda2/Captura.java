@@ -333,7 +333,7 @@ public final class Captura extends AuxiliarInternalFrameImagen {
                 .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInputsLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(JLID, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
+                        .addComponent(JLID, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
                     .addComponent(JT_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,21 +342,22 @@ public final class Captura extends AuxiliarInternalFrameImagen {
                         .addComponent(JL_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jInputsLayout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
                     .addComponent(JT_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInputsLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(JL_Apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(JL_Apellido, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                     .addGroup(jInputsLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(JT_Apellido, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInputsLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JT_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JL_Domicilio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JT_Domicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                    .addComponent(JT_Domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInputsLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -366,24 +367,23 @@ public final class Captura extends AuxiliarInternalFrameImagen {
                         .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(JT_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(13, 13, 13)
                 .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInputsLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(JT_Email, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JT_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jInputsLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(19, 19, 19)
                         .addComponent(JL_Email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jInputsLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(7, 7, 7)
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInputsLayout.createSequentialGroup()
                         .addComponent(JL_FechaDeNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(17, 17, 17))
                     .addGroup(jInputsLayout.createSequentialGroup()
-                        .addComponent(jDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                        .addComponent(jDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                         .addGap(21, 21, 21)))
                 .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInputsLayout.createSequentialGroup()
@@ -565,7 +565,6 @@ public final class Captura extends AuxiliarInternalFrameImagen {
                             .addComponent(jPBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 778, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jInputs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(45, 45, 45)
                         .addComponent(jPFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -585,7 +584,7 @@ public final class Captura extends AuxiliarInternalFrameImagen {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -866,7 +865,10 @@ public final class Captura extends AuxiliarInternalFrameImagen {
             campo = campo.concat("+FechaNacimiento");
 
         }
-        if ("Campos:".equals(campo)) {
+        Metodos enlace = new Metodos();
+
+        boolean regexValidation = enlace.checkValidation(nombre, apellido, telefono, email);
+        if ("Campos:".equals(campo) && regexValidation) {
             System.out.println(campo);
             // Si no hay ningun campo vacio
             // -- Entonces vamos a mandar una alerta la cual pregunte si realmente quiere agregar los datos.
@@ -885,7 +887,6 @@ public final class Captura extends AuxiliarInternalFrameImagen {
                 // Metodos error
                 try {
                     if(JT_ID.getText().isEmpty()){
-                        Metodos enlace = new Metodos();
                         enlace.Agregar(nombre, apellido, domicilio, telefono, email, nacimiento, sexo, edad, fis, longitud);
                         Limpiar();
                         datosTabla();
@@ -910,6 +911,8 @@ public final class Captura extends AuxiliarInternalFrameImagen {
         } else {
             // Split y luego pop
             JOptionPane.showMessageDialog(rootPane, "Faltan los siguientes campos a completar" + campo);
+            JOptionPane.showMessageDialog(rootPane, "Cheque que los campos sean correctos");
+
         }
 
     }//GEN-LAST:event_JB_AgregarActionPerformed
@@ -1354,8 +1357,10 @@ public final class Captura extends AuxiliarInternalFrameImagen {
     }
     
     // Funcion para checar que los regex esten correctos
-    void checarRegexBoton(){
+    public boolean checarRegexBoton(){
         
+        // Obtenmos los 4 valores para checar si cumplen con los regex
+        return false;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

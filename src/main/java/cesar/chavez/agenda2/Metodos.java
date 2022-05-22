@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 /**
  *
@@ -321,8 +323,66 @@ public class Metodos {
         return null;
     }
 
+    
     // Funcion para checar la validacion a la hora de agregar en el boton
-    public void checkValidation() {
+    // Funcion para checar que los regex esten correctos
+    public boolean checkValidation(String Nombre, String Apellido, String Telefono, String Email) {
 
+        // Obtenmos los 4 valores para checar si cumplen con los regex
+        boolean regexesCumplido= true;
+        
+        // Patrones de Regex
+        Pattern letrasSolo = Pattern.compile("[0-9]");
+        Pattern soloNumeros = Pattern.compile("[A-Za-z]");
+        Pattern emailRegex =Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
+        
+        // Matches -- Coincidencias
+        
+        Matcher nombreMatcher = letrasSolo.matcher(Nombre);
+        Matcher apellidoMatcher = letrasSolo.matcher(Apellido);
+        Matcher telefonoMatcher = soloNumeros.matcher(Telefono);
+        Matcher emailMatcher = emailRegex.matcher(Email);
+        
+        // # Condiciones para encontrar patron
+        
+        //    -- Si se encuentra que hay un numero en el string, se va escribir un false
+        if(nombreMatcher.find()){
+            // Esto significaría que alguna de las validaciones esta incorrecta y se tiene que corregir
+            regexesCumplido = false;
+            System.out.println("Solo deben de ser letras--Nombre");
+        }
+        
+        if(!apellidoMatcher.find()){
+            regexesCumplido = false;
+            System.out.println("Solo deben de ser letras--Apellido");
+
+        }
+        
+        // # Validacion para telefono
+        
+        if(telefonoMatcher.find()){
+            regexesCumplido = false;
+            System.out.println("No es un telefono valido");
+        }
+        
+        // #Validacion para email
+        
+        if(!emailMatcher.find()){
+            regexesCumplido = false;
+            System.out.println("No es un correo valido");
+
+        }
+        // Va a devolver un booleano el cual va representar si se cumplen todos los regex o si hay uno o más, pero con que uno no se cumpla
+        // Se va a devolver un false -- Lo cual signifca que alguno esta mal y no se va a poder pasar de ahí
+        
+        if(regexesCumplido == true){
+            // Vamos a devolver un true
+            // return true;
+            return regexesCumplido;
+        } else {
+            //return false;
+            return regexesCumplido;
+        }
     }
+
 }
