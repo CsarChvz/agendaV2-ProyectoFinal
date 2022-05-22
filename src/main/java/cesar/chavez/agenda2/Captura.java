@@ -231,11 +231,6 @@ public final class Captura extends AuxiliarInternalFrameImagen {
                 JT_TelefonoFocusLost(evt);
             }
         });
-        JT_Telefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JT_TelefonoActionPerformed(evt);
-            }
-        });
 
         JL_Sexo.setText("Sexo");
 
@@ -248,21 +243,11 @@ public final class Captura extends AuxiliarInternalFrameImagen {
         JR_Femenino.setMaximumSize(new java.awt.Dimension(200, 35));
 
         JT_Edad.setMaximumSize(new java.awt.Dimension(150, 50));
-        JT_Edad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JT_EdadActionPerformed(evt);
-            }
-        });
 
         JT_Email.setMaximumSize(new java.awt.Dimension(150, 50));
         JT_Email.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 JT_EmailFocusLost(evt);
-            }
-        });
-        JT_Email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JT_EmailActionPerformed(evt);
             }
         });
 
@@ -387,12 +372,12 @@ public final class Captura extends AuxiliarInternalFrameImagen {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(JT_Telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))))
+                            .addComponent(JT_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(13, 13, 13)
                 .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInputsLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(JT_Email, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+                        .addComponent(JT_Email, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
                     .addGroup(jInputsLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(JL_Email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -416,16 +401,12 @@ public final class Captura extends AuxiliarInternalFrameImagen {
                         .addComponent(JT_Edad, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)))
                 .addGap(1, 1, 1)
                 .addComponent(jLabel9)
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
                 .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInputsLayout.createSequentialGroup()
-                        .addComponent(JR_Femenino, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                        .addGap(4, 4, 4))
-                    .addGroup(jInputsLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JL_Sexo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(JR_Masculino, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(JL_Sexo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jInputsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(JR_Masculino, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                        .addComponent(JR_Femenino, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)))
                 .addGap(19, 19, 19))
         );
 
@@ -611,7 +592,7 @@ public final class Captura extends AuxiliarInternalFrameImagen {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -625,32 +606,49 @@ public final class Captura extends AuxiliarInternalFrameImagen {
     private void JTFNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTFNombreActionPerformed
+    
+    // # Funcion para mostrar fotografía
+    //      -- Esta funcion muestra la foto y la coloca en el JL_Foto
     private void mostrarFoto(int ID) {
+        
+        // Se instancia un objeto de la clase Metodos
         Metodos enlace = new Metodos();
+        
+        // -- Creamos y guardamos una variable tipo byte para los datos que se nos devuelven del metood obtenerFoto
+        //      __ Se obtiene mediante el ID y se guarda
         byte[] resultado = enlace.obtenerFoto(ID);
+        
+        // Checamos si el resultado que nos devuelve es igual a null
+        //      __  Esto representa que no se devolvio ninguna foto
         if (resultado == null) {
             JOptionPane.showMessageDialog(rootPane, "la persona no tiene foto.");
         } else {
+            // -- So la condicion anterior no se cumplio, se pasa a esta la cual va a convertir la imagen y mostrarla
             try {
+                
+                // Guardamos en el objeto el resultado que nos devuelve convertir la foto 
                 imgFoto = convertirImagen(resultado);
+                // Creamos un icono pero tipo imageIcon con los valores del label de Jl_Fot
                 Icon foto = new ImageIcon(imgFoto.getScaledInstance(JL_Foto.getWidth(), JL_Foto.getHeight(), Image.SCALE_DEFAULT));
+                // Colocamos la foto instanciada en el JL_Foto
                 JL_Foto.setIcon(foto);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(rootPane, ex.getMessage());
             }
         }
     }
-private Image convertirImagen (byte[] bytes)throws IOException{
-    ByteArrayInputStream bais=new
-        ByteArrayInputStream(bytes);
-    Iterator lector= ImageIO.getImageReadersByFormatName("jpg");
-    ImageReader ir=( ImageReader) lector.next();
-    Object objeto=bais;
-    ImageInputStream iis=ImageIO.createImageInputStream(objeto);
-    ir.setInput(iis,true);
-    ImageReadParam irp=ir.getDefaultReadParam();
-    return ir.read(0, irp);
-}
+        
+    // # Funcion para convertir imagen apartir de bytes
+    private Image convertirImagen(byte[] bytes) throws IOException {
+        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+        Iterator lector = ImageIO.getImageReadersByFormatName("jpg");
+        ImageReader ir = (ImageReader) lector.next();
+        Object objeto = bais;
+        ImageInputStream iis = ImageIO.createImageInputStream(objeto);
+        ir.setInput(iis, true);
+        ImageReadParam irp = ir.getDefaultReadParam();
+        return ir.read(0, irp);
+    }
         
     private void JLHombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JLHombreActionPerformed
         // TODO add your handling code here:
@@ -659,41 +657,6 @@ private Image convertirImagen (byte[] bytes)throws IOException{
     private void JLMUJERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JLMUJERActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JLMUJERActionPerformed
-
-    private void JT_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_EmailActionPerformed
-        Pattern pattern = Pattern.compile("\"^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)@[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)(\\\\.[A-Za-z]{2,})$\n");
-        String email = "@gmail.com";
-        Matcher mather = pattern.matcher(email);
-
-        if(mather.find()==true){
-            JOptionPane.showMessageDialog(rootPane, "EL CORREO ES CORRECTO  ");
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "EL CORREO NO ES CORRECTO, FAVOR INGRESAR OTRO");
-        }
-    }//GEN-LAST:event_JT_EmailActionPerformed
-
-    private void JT_EdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_EdadActionPerformed
-        // TODO add your handling code here:
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate Nacimiento = LocalDate.parse("08/04/1987", formatter);
-        Period edad = Period.between(Nacimiento, LocalDate.now());
-        System.out.println(String.format("%d años, %d meses y %d días",
-            edad.getYears(),
-            edad.getMonths(),
-            edad.getDays()));
-    }//GEN-LAST:event_JT_EdadActionPerformed
-
-    private void JT_TelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_TelefonoActionPerformed
-        // TODO add your handling code here:
-        String string = "10";
-
-        if (StringUtils.isNumeric(string)) {
-            JOptionPane.showMessageDialog(rootPane, "EL NUMERO TELEFONICO ES CORRECTO");
-        }
-        else {
-            JOptionPane.showMessageDialog(rootPane, "EL NUMERO TELEFONICO ES INCORRECTO, FAVOR DE INGRESAR SOLO NUMEROS");
-        }
-    }//GEN-LAST:event_JT_TelefonoActionPerformed
 
     private void JT_ApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JT_ApellidoActionPerformed
         // TODO add your handling code here:
@@ -704,22 +667,45 @@ private Image convertirImagen (byte[] bytes)throws IOException{
     }//GEN-LAST:event_JT_IDActionPerformed
 
     private void JB_FotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_FotoActionPerformed
-
+        // # Evento de mostrar la foto cuando se presiona el boton de foto
+        
+        // -- Se instancia un objeto de la clase FileChooser
         JCFFoto = new JFileChooser();
+        //      - Se coloca el objeto en modo FILES_ONLY
         JCFFoto.setFileSelectionMode
         (JCFFoto.FILES_ONLY);
+        //      __ Se coloca un filtro para solo aceptar cierto tipo de archivos y extensiones
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG", "jpg");
+        //      - Colocamos el filtro a nuestro objeto fileChooser
         JCFFoto.setFileFilter(filtro);
+        
+        //      __ Guardamos la lo que nos devuelve de Dialog
         int estado = JCFFoto.showOpenDialog(null);
+        
+        // Si este fue aprovado, entonces vamos a hacer lo siguiente
         if(estado == JFileChooser.APPROVE_OPTION){
+            
+            // __ Vamos a intentar lo siguiente
             try {
+                
+                // -- Guaradamos en la variable fis, el archivo que se selecciono
                 fis = new FileInputStream(JCFFoto.getSelectedFile());
+                //      - Con el archivo que se selecciono, tambien se guarda la longitud del archivo
                 longitud = (int) JCFFoto.getSelectedFile().length();
+                // __ Con los datos anteriores, intentamos lo siguiente
                 try {
+                    
+                    // Creamos un objeto Imagen llamado icon y guardamos lo que nos devuelve dle metodo read de la clase ImageIO
+                    //      - Lo que hace este metodo es con el archivo obtenido, se obtiene la escala y sy se obtiene lo de JL_FOTO
                     Image icon = ImageIO.read
                                             (JCFFoto.getSelectedFile()).getScaledInstance (JL_Foto.getWidth(), JL_Foto.getHeight(), Image.SCALE_DEFAULT);
+                    // -- Se coloca el icon con el metodo setIcon
+                    //      __ Se tiene que hacer un objeto tipo ImageIcon con la imagen que se hizo anteriormente
                     JL_Foto.setIcon(new ImageIcon(icon));
+                    // Se actualiza el UI
                     JL_Foto.updateUI();
+                    
+                    // ## Errores
                 } catch (IOException ioe) {
                     JOptionPane.showMessageDialog(rootPane, "Imagen:" +ioe);
                 }

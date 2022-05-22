@@ -75,7 +75,7 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jPBotones" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="136" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="132" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -234,7 +234,7 @@
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" max="32767" attributes="0"/>
-                              <Component id="JT_Telefono" alignment="3" pref="27" max="32767" attributes="0"/>
+                              <Component id="JT_Telefono" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -242,7 +242,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                          <Component id="JT_Email" pref="31" max="32767" attributes="0"/>
+                          <Component id="JT_Email" pref="27" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
@@ -276,18 +276,12 @@
                   </Group>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="JR_Femenino" pref="24" max="32767" attributes="0"/>
-                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="JL_Sexo" alignment="0" max="32767" attributes="0"/>
-                              <Component id="JR_Masculino" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                      <Component id="JL_Sexo" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="JR_Masculino" alignment="3" pref="24" max="32767" attributes="0"/>
+                          <Component id="JR_Femenino" alignment="3" pref="24" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -388,7 +382,6 @@
           </Properties>
           <Events>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="JT_TelefonoFocusLost"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JT_TelefonoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="JL_Sexo">
@@ -424,9 +417,6 @@
               <Dimension value="[150, 50]"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JT_EdadActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="JT_Email">
           <Properties>
@@ -436,7 +426,6 @@
           </Properties>
           <Events>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="JT_EmailFocusLost"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JT_EmailActionPerformed"/>
           </Events>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser">
