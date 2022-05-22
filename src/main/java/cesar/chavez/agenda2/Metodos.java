@@ -349,11 +349,13 @@ public class Metodos {
         if(nombreMatcher.find()){
             // Esto significaría que alguna de las validaciones esta incorrecta y se tiene que corregir
             regexesCumplido = false;
+            JOptionPane.showMessageDialog(null, "Solo deben ser letras", "Nombre_Validation", 2);
             System.out.println("Solo deben de ser letras--Nombre");
         }
         
-        if(!apellidoMatcher.find()){
+        if(apellidoMatcher.find()){
             regexesCumplido = false;
+            JOptionPane.showMessageDialog(null, "Solo deben ser letras", "Apellido_Validation", 2);
             System.out.println("Solo deben de ser letras--Apellido");
 
         }
@@ -362,6 +364,7 @@ public class Metodos {
         
         if(telefonoMatcher.find()){
             regexesCumplido = false;
+            JOptionPane.showMessageDialog(null, "Solo deben ser números", "Telefono_Validation", 2);
             System.out.println("No es un telefono valido");
         }
         
@@ -369,6 +372,7 @@ public class Metodos {
         
         if(!emailMatcher.find()){
             regexesCumplido = false;
+            JOptionPane.showMessageDialog(null, "Debe ser un correo valido", "Email_Validation", 3);
             System.out.println("No es un correo valido");
 
         }
