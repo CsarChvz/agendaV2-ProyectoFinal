@@ -203,13 +203,6 @@ public final class Captura extends AuxiliarInternalFrameImagen {
                 JT_NombreFocusLost(evt);
             }
         });
-        JT_Nombre.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                JT_NombreInputMethodTextChanged(evt);
-            }
-        });
 
         JT_Apellido.setMaximumSize(new java.awt.Dimension(150, 50));
         JT_Apellido.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -717,29 +710,52 @@ public final class Captura extends AuxiliarInternalFrameImagen {
     }//GEN-LAST:event_JB_FotoActionPerformed
 
     private void JB_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_BuscarActionPerformed
-        
+        // # Evento para buscar usario
         Metodos enlace = new Metodos();
+        // Se guarda el valor que se escriba en el input, este va a ser devuelto como string
         nomabus = JOptionPane.showInputDialog(rootPane, "¿A que persona quieres buscar?", "Buscando...", JOptionPane.QUESTION_MESSAGE);
+        //  - Checamos que nomabus sea diferente a null, esto va a representar que se escribio algo en el inputDIalago
         if(nomabus != null){
+            // Creamos variable de resultados y la instenciamos con un valor nullo
             String[] resultados = null;
+            // -- Valor que dice cuantas veces estan repetidas un usuario
+            //      - Este guarda lo que seria un retorno de un metodo de la instancia enlace, el cual se toma como paramatro el nombre que se escribio
             int nVeces = enlace.vecesRepetidas(nomabus);
-            // Hacer un metodo para checar si existe el usuario y si no mostrar wea
+            // @todo--Hacer un metodo para checar si existe el usuario y si no mostrar wea
+            
+            // Se crea un string para checar si existe el usuario en la base de datos
             String[] nombreExistencia = enlace.existenciaUsuario(nomabus);
+            // Guardamos lo que nos devuelve del metodo buscar que sería una lista de strings de los valores
             resultados = enlace.Buscar(nomabus);
             
+            // ## Condicion que checa si existe más de un usuario
+            //  - Esto es para checar si el valor que se guardo en la variable nVeces, son las veces que se repiten el mismo nombre en la tabla
             if(nVeces>1){
                 try {
-                    jTable1.setEnabled(true);
+                    //  - Mostramos mensaje de cuantos usuarios hay con el mismo nombre
                     JOptionPane.showMessageDialog(rootPane, "Existen " + nVeces + " usuarios con el nombre igual \n Seleccione el que quiera en la tabla");
+                    // - Habilitamos la tabla ya que si hay varios usuarios con el mismo nombre
+                    jTable1.setEnabled(true);
+                    // -- Mandamos a llamar el metodo el cual actualizará la tabla con los nombres repetidos
                     busquedaConsultar(nomabus);
                     
                 } catch (SQLException ex) {
                     Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            // Si nVeces es menor o igual a 1, entonces se va a hacer lo siguiente
+            
+            // # Esto representa que solo se devolvio un usuario con ese nombre
             } else {
+                
+                // -- Ya que nVeces es menor o igual a 1
+                // Entonces se va a checar si existe un usuario con la variable de existencia de usuario
+                //      - Si es igual a nulo, entonces no existen algún usuario con ese nombre
                 if(nombreExistencia[0] == null){
                     JOptionPane.showMessageDialog(rootPane, "No se encontro a " + nomabus);
+                    // - Pero si existe, entonces vamos a llenar los campos con los datos que se nos devolvio del metodo buscar
                 } else {
+                    
+                    // -- Se colocan en los campos
                     JT_ID.setText(resultados[0]);
                     JT_Nombre.setText(resultados[1]);
                     JT_Apellido.setText(resultados[2]);
@@ -763,6 +779,8 @@ public final class Captura extends AuxiliarInternalFrameImagen {
                         buttonGroup1.setSelected(JR_Femenino.getModel(), true);
 
                     }
+                    
+                    // Mostramos la foto
                     mostrarFoto(Integer.parseInt(resultados[0]));
                     
                     if(!JT_ID.getText().isEmpty()){
@@ -779,7 +797,7 @@ public final class Captura extends AuxiliarInternalFrameImagen {
     }//GEN-LAST:event_JB_BuscarActionPerformed
 
     private void JB_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AgregarActionPerformed
-
+        
         String campo = "Campos:";
         String nombre =JT_Nombre.getText();
         String apellido =JT_Apellido.getText();
@@ -981,7 +999,7 @@ public final class Captura extends AuxiliarInternalFrameImagen {
                     datosTabla();
                     jTable1.clearSelection();
                     jTable1.setEnabled(false);
-                } catch (Exception e) {
+                } catch (SQLException e) {
                     JOptionPane.showMessageDialog(rootPane, "Operacion con error: " + e);
                 } finally {
                     JOptionPane.showMessageDialog(rootPane, "Operacion con exito");
@@ -1031,7 +1049,10 @@ public final class Captura extends AuxiliarInternalFrameImagen {
             Logger.getLogger(Captura.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_JB_LimpiarActionPerformed
-
+    // ## Antigua solución para mostrar los datos en los campos segun clickeabamos una fila de la tabla
+    
+    // -- Se descarto porque se pedía el doble click
+    //  -  Pero se reutilizo el codigo para usuarlo en MousePressed
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
 //        int fila = jTable1.getSelectedRow();
@@ -1089,7 +1110,11 @@ public final class Captura extends AuxiliarInternalFrameImagen {
     
     // https://stackoverflow.com/questions/14852719/double-click-listener-on-jtable-in-java
     }//GEN-LAST:event_jTable1MouseClicked
-
+    
+    // # Evento para el doubleClick de la tabla si es que hay dos o más usuarios repetidos
+    //  -- Esto para la seleccioón de contactos
+    //
+    //      __ Este evento se sobreescribe para que se ejecute según una condicioón.
     private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
         // TODO add your handling code here:
         //JTable jTable1 = (JTable) evt.getSource();
@@ -1152,11 +1177,14 @@ public final class Captura extends AuxiliarInternalFrameImagen {
             }
         }
     }//GEN-LAST:event_jTable1MousePressed
-
-    private void JT_NombreInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_JT_NombreInputMethodTextChanged
-        System.out.println("");
-    }//GEN-LAST:event_JT_NombreInputMethodTextChanged
-
+    
+    
+    // --- Inicio del focus ---
+    
+    // # FOCUSLost
+    //  -- Estos eventos se usan para cuando se cambia de campo, este cheque lo que tenga escrito en el campo, se obtenga y se compare 
+    // con el regex, esto va a mostrar si es correcto lo que se escribio o no
+    //          __ Estos se van a usar en una funcion que se van a checar
     private void JT_NombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JT_NombreFocusLost
         // TODO add your handling code here:
         Pattern pattern = Pattern.compile("[0-9]");
@@ -1237,6 +1265,8 @@ public final class Captura extends AuxiliarInternalFrameImagen {
             }
         }
     }//GEN-LAST:event_JT_EmailFocusLost
+    // # Funcion que limpia todos los campos
+    //  -- Reiniicia los campos    
     public void Limpiar(){
            JT_ID.setText(null);
            JT_Nombre.setText(null);
@@ -1258,7 +1288,7 @@ public final class Captura extends AuxiliarInternalFrameImagen {
            jLabel3.setText("");
            jLabel4.setText("");
           }
-
+    // # FUncion la cual obtiene todos los datos de la tabla y los ingresa en la tabla
     void datosTabla() throws SQLException {
         Metodos m = new Metodos();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -1283,6 +1313,7 @@ public final class Captura extends AuxiliarInternalFrameImagen {
         }
     }
     
+    // # Funcion que llena la tabla con los datos según el nombre que se le pase
     public void busquedaConsultar(String nombre) throws SQLException {
         String query = "select * from Personas where Nombre=?";
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -1309,12 +1340,12 @@ public final class Captura extends AuxiliarInternalFrameImagen {
         }
 
     }
-    
+    // Funcion para mostrar los botoens
     void mostrarBotones() {
         JB_Modificar.setVisible(true);
         JB_Eliminar.setVisible(true);
     }
-    
+    // -- Funcion para esconder los labels que muestran si esta correcto o no el campo
     void esconderStatesLabels(){
         jLabel1.setVisible(false);
         jLabel2.setVisible(false);
