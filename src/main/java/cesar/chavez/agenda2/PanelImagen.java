@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author depresion
+ * @author César Chávez Rodríguez 6A TPIN Matutino
  */
 public class PanelImagen extends JPanel{
     private Image imagen;

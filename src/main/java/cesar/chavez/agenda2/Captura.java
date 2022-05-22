@@ -47,7 +47,7 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  *
- * @author César Chávez Rodríguez 6A TPIN
+ * @author César Chávez Rodríguez 6A TPIN Matutino
  */
 public final class Captura extends AuxiliarInternalFrameImagen {
     
@@ -1300,6 +1300,8 @@ public final class Captura extends AuxiliarInternalFrameImagen {
            jLabel2.setText("");
            jLabel3.setText("");
            jLabel4.setText("");
+           fis=null;
+           longitud = 0;
           }
     // # FUncion la cual obtiene todos los datos de la tabla y los ingresa en la tabla
     void datosTabla() throws SQLException {

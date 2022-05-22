@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 /**
  *
- * @author ALUMNOS
+ * @author César Chávez Rodríguez 6A TPIN Matutino
  */
 public class Metodos {
 

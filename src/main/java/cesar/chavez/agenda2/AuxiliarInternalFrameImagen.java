@@ -9,7 +9,7 @@ import javax.swing.JInternalFrame;
 
 /**
  *
- * @author depresion
+ * @author César Chávez Rodríguez 6A TPIN Matutino
  */
 public class AuxiliarInternalFrameImagen extends JInternalFrame{
     private PanelImagen pi = new PanelImagen();

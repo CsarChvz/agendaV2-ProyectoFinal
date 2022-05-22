@@ -12,7 +12,7 @@ import javax.swing.JDesktopPane;
 
 /**
  *
- * @author depresion
+ * @author César Chávez Rodríguez 6A TPIN Matutino
  */
 public class FondoJDPane extends JDesktopPane{
     private BufferedImage imagen;

@@ -11,7 +11,7 @@ import javax.swing.JDesktopPane;
 
 /**
  *
- * @author ALUMNOS
+ * @author César Chávez Rodríguez 6A TPIN Matutino
  */
 public class Principal extends javax.swing.JFrame {
 
